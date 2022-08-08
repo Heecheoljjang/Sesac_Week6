@@ -47,12 +47,8 @@ class ViewController: UIViewController {
         KakaoAPIManager.shared.callRequest(type: .blog, query: "희철") { json in
             print(json)
             
-            self.blogList = json["documents"].arrayValue.map {$0["contents"].stringValue}
-            
-//            for item in json["documents"].arrayValue {
-//                self.blogList.append(item["contents"].stringValue.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: ""))
-//            }
-            
+            self.blogList = json["documents"].arrayValue.map { String(htmlEncodedString: $0["contents"].stringValue)! }
+
             self.searchCafe()
         }
     }
@@ -61,13 +57,8 @@ class ViewController: UIViewController {
         KakaoAPIManager.shared.callRequest(type: .cafe, query: "희철") { json in
             print(json)
             
-            self.cafeList = json["documents"].arrayValue.map { $0["contents"].stringValue }
-//            for item in json["documents"].arrayValue {
-//                self.cafeList.append(item["contents"].stringValue.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: ""))
-//            }
-            print(self.cafeList)
-            print(self.blogList)
-            
+            self.cafeList = json["documents"].arrayValue.map { String(htmlEncodedString: $0["contents"].stringValue)! }
+
             self.tableView.reloadData()
             
             
