@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970DBC2128A69D4F00339CFC /* Weather.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 970DBC2028A69D4F00339CFC /* Weather.storyboard */; };
+		970DBC2328A69D5D00339CFC /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2228A69D5D00339CFC /* WeatherViewController.swift */; };
+		970DBC2528A6A50700339CFC /* WeatherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */; };
+		970DBC2728A6A51100339CFC /* AddressAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2628A6A51100339CFC /* AddressAPIManager.swift */; };
+		970DBC2A28A6B3AC00339CFC /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2928A6B3AC00339CFC /* AddressModel.swift */; };
 		9798483C28A33073003EB220 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483B28A33073003EB220 /* ReusableViewProtocol.swift */; };
 		9798483E28A343E2003EB220 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483D28A343E2003EB220 /* TMDBAPIManager.swift */; };
 		97A1991728A4939700E5E192 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1991628A4939700E5E192 /* MapViewController.swift */; };
@@ -38,6 +43,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		970DBC2028A69D4F00339CFC /* Weather.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Weather.storyboard; sourceTree = "<group>"; };
+		970DBC2228A69D5D00339CFC /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIManager.swift; sourceTree = "<group>"; };
+		970DBC2628A6A51100339CFC /* AddressAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAPIManager.swift; sourceTree = "<group>"; };
+		970DBC2928A6B3AC00339CFC /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		9798483B28A33073003EB220 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		9798483D28A343E2003EB220 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		97A1991628A4939700E5E192 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		970DBC1F28A69D4300339CFC /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				970DBC2028A69D4F00339CFC /* Weather.storyboard */,
+				970DBC2228A69D5D00339CFC /* WeatherViewController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		970DBC2828A6B3A200339CFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				970DBC2928A6B3AC00339CFC /* AddressModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9798483A28A3305A003EB220 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +149,8 @@
 		97D7497328A08FEB00247EAC /* SesacWeek6 */ = {
 			isa = PBXGroup;
 			children = (
+				970DBC2828A6B3A200339CFC /* Model */,
+				970DBC1F28A69D4300339CFC /* Weather */,
 				9798483A28A3305A003EB220 /* Protocol */,
 				97AA192828A1DFE700AD41A5 /* View */,
 				97D7499528A0948100247EAC /* Network */,
@@ -157,6 +186,8 @@
 			children = (
 				97D7499B28A0A7A200247EAC /* KakaoAPIManager.swift */,
 				9798483D28A343E2003EB220 /* TMDBAPIManager.swift */,
+				970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */,
+				970DBC2628A6A51100339CFC /* AddressAPIManager.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";
@@ -231,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				970DBC2128A69D4F00339CFC /* Weather.storyboard in Resources */,
 				97D7499228A090A400247EAC /* .gitignore in Resources */,
 				97D7498128A08FED00247EAC /* LaunchScreen.storyboard in Resources */,
 				97AA192C28A1E61000AD41A5 /* CardView.xib in Resources */,
@@ -247,11 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				970DBC2A28A6B3AC00339CFC /* AddressModel.swift in Sources */,
 				97D7497928A08FEB00247EAC /* ViewController.swift in Sources */,
 				97AA193428A1F64700AD41A5 /* MainViewController.swift in Sources */,
 				97D749A328A0E9D300247EAC /* String+Extension.swift in Sources */,
+				970DBC2528A6A50700339CFC /* WeatherAPIManager.swift in Sources */,
 				97D7497528A08FEB00247EAC /* AppDelegate.swift in Sources */,
 				97D7499E28A0ABF800247EAC /* ClosureViewController.swift in Sources */,
+				970DBC2728A6A51100339CFC /* AddressAPIManager.swift in Sources */,
+				970DBC2328A69D5D00339CFC /* WeatherViewController.swift in Sources */,
 				97AA193128A1F39800AD41A5 /* CardCollectionViewCell.swift in Sources */,
 				97D7499428A0910900247EAC /* APIKey.swift in Sources */,
 				97D7497728A08FEB00247EAC /* SceneDelegate.swift in Sources */,
@@ -415,12 +451,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacWeek6/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "권한설정";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치권한";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "동영상 접근";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "갤러리 접근";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Weather;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -447,12 +483,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SesacWeek6/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 접근";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "권한설정";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치권한";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "동영상 접근";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "갤러리 접근";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Weather;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
