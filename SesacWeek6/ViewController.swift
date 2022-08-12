@@ -48,7 +48,7 @@ class ViewController: UIViewController {
             print(json)
             
             self.blogList = json["documents"].arrayValue.map { String(htmlEncodedString: $0["contents"].stringValue)! }
-
+            
             self.searchCafe()
         }
     }
@@ -60,8 +60,6 @@ class ViewController: UIViewController {
             self.cafeList = json["documents"].arrayValue.map { String(htmlEncodedString: $0["contents"].stringValue)! }
 
             self.tableView.reloadData()
-            
-            
         }
     }
     @IBAction func expandCell(_ sender: UIBarButtonItem) {
