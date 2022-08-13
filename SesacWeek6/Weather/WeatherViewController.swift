@@ -10,6 +10,7 @@ import CoreLocation
 
 import SkeletonView
 import Kingfisher
+import JGProgressHUD
 
 class WeatherViewController: UIViewController {
     
@@ -40,23 +41,75 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
-    var lat: Double = 0
-    var lon: Double = 0
+    let hud = JGProgressHUD()
     
+    var lat: Double = 37.517829
+    var lon: Double = 126.886270
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        allHidden()
+        
+        hud.show(in: view)
         
         locationManager.delegate = self
         
         setUpSkeletonView()
         
         setUpUI()
+                        
+        //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
+        
+        AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
+            self.locationLabel.text = "\(value.regionFirst)"
+            
+            WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
+                //첫번째 뷰
+                let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                self.weatherImageView.kf.setImage(with: imageURL!)
+                self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
+                self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
                 
-        //view.showAnimatedGradientSkeleton()
+                //두번째 뷰
+                self.windLabel.text = "풍속    \(value.wind)m/s"
+                
+                //세번째 뷰
+                self.humidityLabel.text = "습도    \(value.humidity)%"
+                
+                //네번째 뷰
+                self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                
+                //다섯번째 뷰
+                self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+                
+                self.hud.dismiss(animated: true)
+                self.allShow()
+            }
+        }
         
     }
     
+    func allHidden() {
+        locationView.isHidden = true
+        weatherView.isHidden = true
+        windView.isHidden = true
+        humidityView.isHidden = true
+        pressureView.isHidden = true
+        messageView.isHidden = true
+    }
+    
+    func allShow() {
+        locationView.isHidden = false
+        weatherView.isHidden = false
+        windView.isHidden = false
+        humidityView.isHidden = false
+        pressureView.isHidden = false
+        messageView.isHidden = false
+    }
+    
     func setUpSkeletonView() {
+        
         view.isSkeletonable = true
         timeLabel.isSkeletonable = true
         locationView.isSkeletonable = true
@@ -83,18 +136,19 @@ class WeatherViewController: UIViewController {
     
     func setUpUI() {
         view.backgroundColor = .systemGray5
-        locationLabel.font = UIFont(name: "SUIT-SemiBold", size: 25)
-        currentTempLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        locationButton.image = UIImage(systemName: "location")
+        locationLabel.font = UIFont(name: CustomFont.semibold, size: 25)
+        currentTempLabel.font = UIFont(name: CustomFont.medium, size: 20)
         weatherView.layer.cornerRadius = 10
-        maxMinTempLabel.font = UIFont(name: "SUIT-Medium", size: 15)
+        maxMinTempLabel.font = UIFont(name: CustomFont.medium, size: 15)
         maxMinTempLabel.textColor = .lightGray
-        windLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        windLabel.font = UIFont(name: CustomFont.medium, size: 20)
         windView.layer.cornerRadius = 10
-        humidityLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        humidityLabel.font = UIFont(name: CustomFont.medium, size: 20)
         humidityView.layer.cornerRadius = 10
-        pressureLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        pressureLabel.font = UIFont(name: CustomFont.medium, size: 20)
         pressureView.layer.cornerRadius = 10
-        messageLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        messageLabel.font = UIFont(name: CustomFont.medium, size: 20)
         messageView.layer.cornerRadius = 10
     }
 
@@ -153,40 +207,46 @@ extension WeatherViewController {
 extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        print(#function)
-        
+                
         if let coordinate = locations.last?.coordinate {
             lat = coordinate.latitude
             lon = coordinate.longitude
             
             print(lat, lon)
             
+            allHidden()
+            hud.show(in: view)
+            
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
-            }
-            WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in
-                print(value)
-                //첫번째 뷰
-                let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
-                self.weatherImageView.kf.setImage(with: imageURL!)
-                self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
                 
-                //두번째 뷰
-                self.windLabel.text = "풍속    \(value.wind)m/s"
-                
-                //세번째 뷰
-                self.humidityLabel.text = "습도    \(value.humidity)%"
-                
-                //네번째 뷰
-                self.pressureLabel.text = "기압    \(value.pressure)hPa"
-                
-                //다섯번째 뷰
-                self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+                WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
+                    //첫번째 뷰
+                    let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                    self.weatherImageView.kf.setImage(with: imageURL!)
+                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
+                    self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
+                    
+                    //두번째 뷰
+                    self.windLabel.text = "풍속    \(value.wind)m/s"
+                    
+                    //세번째 뷰
+                    self.humidityLabel.text = "습도    \(value.humidity)%"
+                    
+                    //네번째 뷰
+                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                    
+                    //다섯번째 뷰
+                    self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+                    
+                    //위치 버튼 이미지 채우기
+                    self.locationButton.image = UIImage(systemName: "location.fill")
+                    
+                    self.hud.dismiss(animated: true)
+                    self.allShow()
+                }
             }
         }
-        
         locationManager.stopUpdatingLocation()
     }
     

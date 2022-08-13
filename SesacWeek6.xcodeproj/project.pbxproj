@@ -16,6 +16,8 @@
 		978ED4AB28A7E9AD00A8324B /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */; };
 		978ED4AC28A7E9AD00A8324B /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */; };
 		978ED4B428A7EB0800A8324B /* SUIT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */; };
+		978ED4B728A7F79E00A8324B /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 978ED4B628A7F79E00A8324B /* JGProgressHUD */; };
+		978ED4B928A7F7A500A8324B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978ED4B828A7F7A500A8324B /* Font.swift */; };
 		9798483C28A33073003EB220 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483B28A33073003EB220 /* ReusableViewProtocol.swift */; };
 		9798483E28A343E2003EB220 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483D28A343E2003EB220 /* TMDBAPIManager.swift */; };
 		97A1991728A4939700E5E192 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1991628A4939700E5E192 /* MapViewController.swift */; };
@@ -58,6 +60,7 @@
 		978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.ttf"; sourceTree = "<group>"; };
+		978ED4B828A7F7A500A8324B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9798483B28A33073003EB220 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		9798483D28A343E2003EB220 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		97A1991628A4939700E5E192 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 				97D7498D28A0903900247EAC /* Kingfisher in Frameworks */,
 				97D7498A28A0902D00247EAC /* Alamofire in Frameworks */,
 				97F4488228A5D6EE006FC86B /* YPImagePicker in Frameworks */,
+				978ED4B728A7F79E00A8324B /* JGProgressHUD in Frameworks */,
 				97E72D4C28A7B4B7007EE25E /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +132,7 @@
 				978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */,
 				978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */,
 				978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */,
+				978ED4B828A7F7A500A8324B /* Font.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				97D7498F28A0904A00247EAC /* SwiftyJSON */,
 				97F4488128A5D6EE006FC86B /* YPImagePicker */,
 				97E72D4B28A7B4B7007EE25E /* SkeletonView */,
+				978ED4B628A7F79E00A8324B /* JGProgressHUD */,
 			);
 			productName = SesacWeek6;
 			productReference = 97D7497128A08FEB00247EAC /* SesacWeek6.app */;
@@ -274,6 +280,7 @@
 				97D7498E28A0904A00247EAC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				97F4488028A5D6EE006FC86B /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				97E72D4A28A7B4B7007EE25E /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 97D7497228A08FEB00247EAC /* Products */;
 			projectDirPath = "";
@@ -330,6 +337,7 @@
 				97D7499728A0949C00247EAC /* Endpoint.swift in Sources */,
 				97AA192E28A1E62A00AD41A5 /* CardView.swift in Sources */,
 				97E72D4928A77818007EE25E /* WeatherModel.swift in Sources */,
+				978ED4B928A7F7A500A8324B /* Font.swift in Sources */,
 				97D7499928A0951200247EAC /* URL+Extension.swift in Sources */,
 				97A1991728A4939700E5E192 /* MapViewController.swift in Sources */,
 				97F4488428A5DD10006FC86B /* CameraViewController.swift in Sources */,
@@ -560,6 +568,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		97D7498828A0902D00247EAC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -603,6 +619,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		978ED4B628A7F79E00A8324B /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		97D7498928A0902D00247EAC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97D7498828A0902D00247EAC /* XCRemoteSwiftPackageReference "Alamofire" */;
