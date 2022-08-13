@@ -21,14 +21,14 @@ class AddressAPIManager {
         let url = Endpoint.kakaoAddress + "x=\(lon)&y=\(lat)&input_coord=WGS84"
         
         let header: HTTPHeaders = [
-            "Authorization": "KakaoAK 62c44e9aa0dc53cc2131bef3065b902e"
+            "Authorization": "KakaoAK \(APIKey.kakao)"
         ]
         
         AF.request(url, method: .get, headers: header).validate().responseData { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
+                
                 let address = json["documents"].arrayValue[0]["address"]
                 
                 let first = address["region_1depth_name"].stringValue

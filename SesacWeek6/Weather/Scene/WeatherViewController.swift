@@ -43,28 +43,33 @@ class WeatherViewController: UIViewController {
     
     let hud = JGProgressHUD()
     
+    //기본 새싹캠퍼스 좌표
     var lat: Double = 37.517829
     var lon: Double = 126.886270
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allHidden()
-        
-        hud.show(in: view)
-        
         locationManager.delegate = self
         
         setUpSkeletonView()
         
         setUpUI()
+        
+        allHiddenAndInit()
+        hud.show(in: view)
                         
         //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
+        //networking(lat: lat, lon: lon)
         
+        
+    }
+    func networking(lat: Double, lon: Double) {
+
         AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
             self.locationLabel.text = "\(value.regionFirst)"
             
-            WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
+            WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in
                 //첫번째 뷰
                 let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
                 self.weatherImageView.kf.setImage(with: imageURL!)
@@ -87,17 +92,24 @@ class WeatherViewController: UIViewController {
                 self.allShow()
             }
         }
-        
     }
     
-    func allHidden() {
+    //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
+    //뷰가 다시 보여질때 수정되는 부분이 약간 보이므로 아예 초기화를 시켜놓기로함
+    func allHiddenAndInit() {
         locationButton.isHidden = true
         locationView.isHidden = true
+        currentTempLabel.text = ""
+        maxMinTempLabel.text = ""
         weatherView.isHidden = true
         windView.isHidden = true
+        windLabel.text = ""
         humidityView.isHidden = true
+        humidityLabel.text = ""
         pressureView.isHidden = true
+        pressureLabel.text = ""
         messageView.isHidden = true
+        messageLabel.text = ""
     }
     
     func allShow() {
@@ -179,8 +191,10 @@ extension WeatherViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
+            networking(lat: lat, lon: lon)
             showRequestLocationServiceAlert()
         case .denied:
+            networking(lat: lat, lon: lon)
             showRequestLocationServiceAlert()
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
@@ -213,13 +227,14 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             lat = coordinate.latitude
             lon = coordinate.longitude
-            
-            print(lat, lon)
-            
-            allHidden()
+                        
+            allHiddenAndInit()
             hud.show(in: view)
             
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
+                //위치 버튼 이미지 채우기
+                self.locationButton.image = UIImage(systemName: "location.fill")
+                
                 self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
                 
                 WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
@@ -240,9 +255,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
                     
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
-                    
-                    //위치 버튼 이미지 채우기
-                    self.locationButton.image = UIImage(systemName: "location.fill")
                     
                     self.hud.dismiss(animated: true)
                     self.allShow()

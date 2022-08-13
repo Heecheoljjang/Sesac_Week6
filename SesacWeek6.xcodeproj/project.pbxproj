@@ -107,13 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		970DBC1F28A69D4300339CFC /* Weather */ = {
+		970DBC1F28A69D4300339CFC /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				970DBC2028A69D4F00339CFC /* Weather.storyboard */,
 				970DBC2228A69D5D00339CFC /* WeatherViewController.swift */,
 			);
-			path = Weather;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		970DBC2828A6B3A200339CFC /* Model */ = {
@@ -128,13 +128,40 @@
 		978ED4A028A7E9A000A8324B /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				978ED4BA28A7FE6400A8324B /* Resource */,
+				978ED4B828A7F7A500A8324B /* Font.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		978ED4BA28A7FE6400A8324B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
 				978ED4A128A7E9AD00A8324B /* SUIT-Bold.ttf */,
 				978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */,
 				978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */,
 				978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */,
-				978ED4B828A7F7A500A8324B /* Font.swift */,
 			);
-			path = Font;
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		978ED4BB28A7FEF400A8324B /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				978ED4BC28A7FF0A00A8324B /* Manager */,
+				970DBC2828A6B3A200339CFC /* Model */,
+				970DBC1F28A69D4300339CFC /* Scene */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		978ED4BC28A7FF0A00A8324B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */,
+				970DBC2628A6A51100339CFC /* AddressAPIManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		9798483A28A3305A003EB220 /* Protocol */ = {
@@ -161,8 +188,8 @@
 		97D7496828A08FEB00247EAC = {
 			isa = PBXGroup;
 			children = (
-				978ED4A028A7E9A000A8324B /* Font */,
 				97D7499128A090A400247EAC /* .gitignore */,
+				978ED4A028A7E9A000A8324B /* Font */,
 				97D7497328A08FEB00247EAC /* SesacWeek6 */,
 				97D7497228A08FEB00247EAC /* Products */,
 			);
@@ -179,8 +206,7 @@
 		97D7497328A08FEB00247EAC /* SesacWeek6 */ = {
 			isa = PBXGroup;
 			children = (
-				970DBC2828A6B3A200339CFC /* Model */,
-				970DBC1F28A69D4300339CFC /* Weather */,
+				978ED4BB28A7FEF400A8324B /* Weather */,
 				9798483A28A3305A003EB220 /* Protocol */,
 				97AA192828A1DFE700AD41A5 /* View */,
 				97D7499528A0948100247EAC /* Network */,
@@ -216,8 +242,6 @@
 			children = (
 				97D7499B28A0A7A200247EAC /* KakaoAPIManager.swift */,
 				9798483D28A343E2003EB220 /* TMDBAPIManager.swift */,
-				970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */,
-				970DBC2628A6A51100339CFC /* AddressAPIManager.swift */,
 			);
 			path = APIManager;
 			sourceTree = "<group>";

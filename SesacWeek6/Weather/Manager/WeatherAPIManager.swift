@@ -24,7 +24,7 @@ class WeatherAPIManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print(json)
+                
                 let main = json["main"]
                 
                 let temp = Int(round(main["temp"].doubleValue - 273.15))
