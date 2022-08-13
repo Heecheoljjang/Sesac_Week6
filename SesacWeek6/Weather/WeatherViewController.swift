@@ -40,10 +40,10 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        
         print(#function)
         
     }
+
 }
 
 //위치 관련 메서드
@@ -100,6 +100,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        print(#function)
+        
         if let coordinate = locations.last?.coordinate {
             lat = coordinate.latitude
             lon = coordinate.longitude
@@ -107,6 +109,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             print(lat, lon)
             
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
+                self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
                 print(value)
             }
             WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in

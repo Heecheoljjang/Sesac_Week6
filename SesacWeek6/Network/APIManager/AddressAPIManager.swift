@@ -18,7 +18,7 @@ class AddressAPIManager {
     
     func getLocationData(lat: Double, lon: Double, completionHandler: @escaping (AddressModel) -> ()) {
         
-        let url = Endpoint.kakaoAddress + "x=\(lon)&y=\(lat)"
+        let url = Endpoint.kakaoAddress + "x=\(lon)&y=\(lat)&input_coord=WGS84"
         
         let header: HTTPHeaders = [
             "Authorization": "KakaoAK 62c44e9aa0dc53cc2131bef3065b902e"
@@ -29,7 +29,7 @@ class AddressAPIManager {
             case .success(let value):
                 let json = JSON(value)
                 print(json)
-                let address = json["documents"].arrayValue[0]
+                let address = json["documents"].arrayValue[0]["address"]
                 
                 let first = address["region_1depth_name"].stringValue
                 let third = address["region_3depth_name"].stringValue
