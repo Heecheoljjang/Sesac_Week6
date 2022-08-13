@@ -62,35 +62,6 @@ class WeatherViewController: UIViewController {
         hud.show(in: view)
             
     }
-    func networking(lat: Double, lon: Double) {
-
-        AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
-            self.locationLabel.text = "\(value.regionFirst)"
-            
-            WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in
-                //첫번째 뷰
-                let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
-                self.weatherImageView.kf.setImage(with: imageURL!)
-                self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
-                
-                //두번째 뷰
-                self.windLabel.text = "풍속    \(value.wind)m/s"
-                
-                //세번째 뷰
-                self.humidityLabel.text = "습도    \(value.humidity)%"
-                
-                //네번째 뷰
-                self.pressureLabel.text = "기압    \(value.pressure)hPa"
-                
-                //다섯번째 뷰
-                self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
-                
-                self.hud.dismiss(animated: true)
-                self.allShow()
-            }
-        }
-    }
     
     //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
     func allHidden() {
@@ -103,7 +74,7 @@ class WeatherViewController: UIViewController {
         pressureView.isHidden = true
         messageView.isHidden = true
     }
-    
+
     func allShow() {
         timeLabel.isHidden = false
         locationButton.isHidden = false
@@ -114,7 +85,8 @@ class WeatherViewController: UIViewController {
         pressureView.isHidden = false
         messageView.isHidden = false
     }
-    
+
+    //UI 메서드
     func setUpUI() {
         view.backgroundColor = .systemGray5
         timeLabel.font = UIFont(name: CustomFont.medium, size: 16)
@@ -134,6 +106,7 @@ class WeatherViewController: UIViewController {
         messageView.layer.cornerRadius = 10
     }
 
+    //시간 메서드
     func getCurrentTime() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(self.currentTime), userInfo: nil, repeats: true)
     }
@@ -172,11 +145,67 @@ extension WeatherViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
-            networking(lat: lat, lon: lon)
+            allHidden()
+            locationButton.image = UIImage(systemName: "location")
+            hud.show(in: view)
+            AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
+                self.locationLabel.text = "\(value.regionFirst)"
+                
+                WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
+                    //첫번째 뷰
+                    let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                    self.weatherImageView.kf.setImage(with: imageURL!)
+                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
+                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
+                    
+                    //두번째 뷰
+                    self.windLabel.text = "풍속    \(value.wind)m/s"
+                    
+                    //세번째 뷰
+                    self.humidityLabel.text = "습도    \(value.humidity)%"
+                    
+                    //네번째 뷰
+                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                    
+                    //다섯번째 뷰
+                    self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+                    
+                    self.hud.dismiss(animated: true)
+                    self.allShow()
+                }
+            }
             showRequestLocationServiceAlert()
         case .denied:
             //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
-            networking(lat: lat, lon: lon)
+            allHidden()
+            locationButton.image = UIImage(systemName: "location")
+            hud.show(in: view)
+            AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
+                self.locationLabel.text = "\(value.regionFirst)"
+                
+                WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
+                    //첫번째 뷰
+                    let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                    self.weatherImageView.kf.setImage(with: imageURL!)
+                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
+                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
+                    
+                    //두번째 뷰
+                    self.windLabel.text = "풍속    \(value.wind)m/s"
+                    
+                    //세번째 뷰
+                    self.humidityLabel.text = "습도    \(value.humidity)%"
+                    
+                    //네번째 뷰
+                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                    
+                    //다섯번째 뷰
+                    self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+                    
+                    self.hud.dismiss(animated: true)
+                    self.allShow()
+                }
+            }
             showRequestLocationServiceAlert()
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
@@ -192,7 +221,6 @@ extension WeatherViewController {
             if let appSetting = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(appSetting)
             }
-            
         }
         let cancel = UIAlertAction(title: "취소", style: .default)
         requestLocationServiceAlert.addAction(cancel)
@@ -205,9 +233,7 @@ extension WeatherViewController {
 extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        print("123",#function)
-        
+                
         if let coordinate = locations.last?.coordinate {
             lat = coordinate.latitude
             lon = coordinate.longitude
