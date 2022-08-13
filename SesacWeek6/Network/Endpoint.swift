@@ -24,4 +24,5 @@ enum Endpoint {
     
     static let kakaoAddress = "https://dapi.kakao.com/v2/local/geo/coord2address.json?"
     static let weatherURL = "https://api.openweathermap.org/data/2.5/weather?"
+    static let imageURL = "https://openweathermap.org/img/wn/"
 }

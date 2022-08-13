@@ -8,11 +8,18 @@
 import UIKit
 import CoreLocation
 
+import SkeletonView
+import Kingfisher
+
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var locationButton: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var buttonStackView: UIStackView!
     
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -20,7 +27,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var maxMinTempLabel: UILabel!
     
     @IBOutlet weak var windView: UIView!
-    @IBOutlet weak var windLabel: UIView!
+    @IBOutlet weak var windLabel: UILabel!
     
     @IBOutlet weak var humidityView: UIView!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -40,8 +47,55 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        print(#function)
         
+        setUpSkeletonView()
+        
+        setUpUI()
+                
+        //view.showAnimatedGradientSkeleton()
+        
+    }
+    
+    func setUpSkeletonView() {
+        view.isSkeletonable = true
+        timeLabel.isSkeletonable = true
+        locationView.isSkeletonable = true
+        locationView.skeletonCornerRadius = 10
+        weatherView.isSkeletonable = true
+        weatherView.skeletonCornerRadius = 10
+
+        windView.isSkeletonable = true
+        windView.skeletonCornerRadius = 10
+
+        humidityView.isSkeletonable = true
+        humidityView.skeletonCornerRadius = 10
+
+        pressureView.isSkeletonable = true
+        pressureView.skeletonCornerRadius = 10
+
+        messageView.isSkeletonable = true
+        messageView.skeletonCornerRadius = 10
+
+        buttonStackView.isSkeletonable = true
+        buttonStackView.skeletonCornerRadius = 10
+
+    }
+    
+    func setUpUI() {
+        view.backgroundColor = .systemGray5
+        locationLabel.font = UIFont(name: "SUIT-SemiBold", size: 25)
+        currentTempLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        weatherView.layer.cornerRadius = 10
+        maxMinTempLabel.font = UIFont(name: "SUIT-Medium", size: 15)
+        maxMinTempLabel.textColor = .lightGray
+        windLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        windView.layer.cornerRadius = 10
+        humidityLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        humidityView.layer.cornerRadius = 10
+        pressureLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        pressureView.layer.cornerRadius = 10
+        messageLabel.font = UIFont(name: "SUIT-Medium", size: 20)
+        messageView.layer.cornerRadius = 10
     }
 
 }
@@ -110,10 +164,26 @@ extension WeatherViewController: CLLocationManagerDelegate {
             
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
-                print(value)
             }
             WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in
                 print(value)
+                //첫번째 뷰
+                let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                self.weatherImageView.kf.setImage(with: imageURL!)
+                self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
+                self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
+                
+                //두번째 뷰
+                self.windLabel.text = "풍속    \(value.wind)m/s"
+                
+                //세번째 뷰
+                self.humidityLabel.text = "습도    \(value.humidity)%"
+                
+                //네번째 뷰
+                self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                
+                //다섯번째 뷰
+                self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
             }
         }
         
