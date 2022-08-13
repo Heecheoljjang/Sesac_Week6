@@ -88,6 +88,9 @@ extension WeatherViewController: CLLocationManagerDelegate {
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 print(value)
             }
+            WeatherAPIManager.shared.getWeatherData(lat: lat, lon: lon) { value in
+                print(value)
+            }
         }
         
         locationManager.stopUpdatingLocation()

@@ -38,6 +38,7 @@
 		97D7499C28A0A7A200247EAC /* KakaoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7499B28A0A7A200247EAC /* KakaoAPIManager.swift */; };
 		97D7499E28A0ABF800247EAC /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7499D28A0ABF800247EAC /* ClosureViewController.swift */; };
 		97D749A328A0E9D300247EAC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D749A228A0E9D300247EAC /* String+Extension.swift */; };
+		97E72D4928A77818007EE25E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E72D4828A77818007EE25E /* WeatherModel.swift */; };
 		97F4488228A5D6EE006FC86B /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 97F4488128A5D6EE006FC86B /* YPImagePicker */; };
 		97F4488428A5DD10006FC86B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F4488328A5DD10006FC86B /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		97D7499B28A0A7A200247EAC /* KakaoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIManager.swift; sourceTree = "<group>"; };
 		97D7499D28A0ABF800247EAC /* ClosureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureViewController.swift; sourceTree = "<group>"; };
 		97D749A228A0E9D300247EAC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		97E72D4828A77818007EE25E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		97F4488328A5DD10006FC86B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				970DBC2928A6B3AC00339CFC /* AddressModel.swift */,
+				97E72D4828A77818007EE25E /* WeatherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				9798483C28A33073003EB220 /* ReusableViewProtocol.swift in Sources */,
 				97D7499728A0949C00247EAC /* Endpoint.swift in Sources */,
 				97AA192E28A1E62A00AD41A5 /* CardView.swift in Sources */,
+				97E72D4928A77818007EE25E /* WeatherModel.swift in Sources */,
 				97D7499928A0951200247EAC /* URL+Extension.swift in Sources */,
 				97A1991728A4939700E5E192 /* MapViewController.swift in Sources */,
 				97F4488428A5DD10006FC86B /* CameraViewController.swift in Sources */,
