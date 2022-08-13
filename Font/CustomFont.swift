@@ -13,5 +13,6 @@ enum CustomFont {
     static let regular = "SUIT-Regular"
     static let semibold = "SUIT-SemiBold"
     static let medium = "SUIT-Medium"
-    
+    static let thin = "SUIT-Thin"
+    static let light = "SUIT-Light"
 }

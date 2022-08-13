@@ -43,6 +43,8 @@ class WeatherViewController: UIViewController {
     
     let hud = JGProgressHUD()
     
+    var timer = Timer()
+    
     //기본 새싹캠퍼스 좌표
     var lat: Double = 37.517829
     var lon: Double = 126.886270
@@ -56,13 +58,11 @@ class WeatherViewController: UIViewController {
         
         setUpUI()
         
+        getCurrentTime()
+        
         allHiddenAndInit()
         hud.show(in: view)
-                        
-        //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
-        //networking(lat: lat, lon: lon)
-        
-        
+                    
     }
     func networking(lat: Double, lon: Double) {
 
@@ -97,22 +97,18 @@ class WeatherViewController: UIViewController {
     //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
     //뷰가 다시 보여질때 수정되는 부분이 약간 보이므로 아예 초기화를 시켜놓기로함
     func allHiddenAndInit() {
+        timeLabel.isHidden = true
         locationButton.isHidden = true
         locationView.isHidden = true
-        currentTempLabel.text = ""
-        maxMinTempLabel.text = ""
         weatherView.isHidden = true
         windView.isHidden = true
-        windLabel.text = ""
         humidityView.isHidden = true
-        humidityLabel.text = ""
         pressureView.isHidden = true
-        pressureLabel.text = ""
         messageView.isHidden = true
-        messageLabel.text = ""
     }
     
     func allShow() {
+        timeLabel.isHidden = false
         locationButton.isHidden = false
         locationView.isHidden = false
         weatherView.isHidden = false
@@ -150,6 +146,7 @@ class WeatherViewController: UIViewController {
     
     func setUpUI() {
         view.backgroundColor = .systemGray5
+        timeLabel.font = UIFont(name: CustomFont.medium, size: 16)
         locationButton.image = UIImage(systemName: "location")
         locationLabel.font = UIFont(name: CustomFont.semibold, size: 25)
         currentTempLabel.font = UIFont(name: CustomFont.medium, size: 20)
@@ -166,6 +163,18 @@ class WeatherViewController: UIViewController {
         messageView.layer.cornerRadius = 10
     }
 
+    func getCurrentTime() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(self.currentTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func currentTime() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM. dd(E) HH:mm a"
+        formatter.amSymbol = "AM"
+        formatter.pmSymbol = "PM"
+        formatter.locale = Locale(identifier: "ko")
+        timeLabel.text = formatter.string(from: Date())
+    }
 }
 
 //위치 관련 메서드
@@ -191,9 +200,11 @@ extension WeatherViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
+            //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
             networking(lat: lat, lon: lon)
             showRequestLocationServiceAlert()
         case .denied:
+            //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
             networking(lat: lat, lon: lon)
             showRequestLocationServiceAlert()
         case .authorizedWhenInUse:

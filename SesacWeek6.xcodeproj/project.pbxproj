@@ -17,7 +17,9 @@
 		978ED4AC28A7E9AD00A8324B /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */; };
 		978ED4B428A7EB0800A8324B /* SUIT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */; };
 		978ED4B728A7F79E00A8324B /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 978ED4B628A7F79E00A8324B /* JGProgressHUD */; };
-		978ED4B928A7F7A500A8324B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978ED4B828A7F7A500A8324B /* Font.swift */; };
+		978ED4B928A7F7A500A8324B /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978ED4B828A7F7A500A8324B /* CustomFont.swift */; };
+		978ED4BF28A8061600A8324B /* SUIT-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4BD28A8061600A8324B /* SUIT-Thin.ttf */; };
+		978ED4C028A8061600A8324B /* SUIT-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4BE28A8061600A8324B /* SUIT-Light.ttf */; };
 		9798483C28A33073003EB220 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483B28A33073003EB220 /* ReusableViewProtocol.swift */; };
 		9798483E28A343E2003EB220 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9798483D28A343E2003EB220 /* TMDBAPIManager.swift */; };
 		97A1991728A4939700E5E192 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A1991628A4939700E5E192 /* MapViewController.swift */; };
@@ -60,7 +62,9 @@
 		978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.ttf"; sourceTree = "<group>"; };
-		978ED4B828A7F7A500A8324B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		978ED4B828A7F7A500A8324B /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		978ED4BD28A8061600A8324B /* SUIT-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.ttf"; sourceTree = "<group>"; };
+		978ED4BE28A8061600A8324B /* SUIT-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Light.ttf"; sourceTree = "<group>"; };
 		9798483B28A33073003EB220 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		9798483D28A343E2003EB220 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		97A1991628A4939700E5E192 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				978ED4BA28A7FE6400A8324B /* Resource */,
-				978ED4B828A7F7A500A8324B /* Font.swift */,
+				978ED4B828A7F7A500A8324B /* CustomFont.swift */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -141,6 +145,8 @@
 				978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */,
 				978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */,
 				978ED4B328A7EB0800A8324B /* SUIT-Medium.ttf */,
+				978ED4BE28A8061600A8324B /* SUIT-Light.ttf */,
+				978ED4BD28A8061600A8324B /* SUIT-Thin.ttf */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -322,11 +328,13 @@
 			files = (
 				978ED4B428A7EB0800A8324B /* SUIT-Medium.ttf in Resources */,
 				970DBC2128A69D4F00339CFC /* Weather.storyboard in Resources */,
+				978ED4BF28A8061600A8324B /* SUIT-Thin.ttf in Resources */,
 				97D7499228A090A400247EAC /* .gitignore in Resources */,
 				978ED4AB28A7E9AD00A8324B /* SUIT-Regular.ttf in Resources */,
 				97D7498128A08FED00247EAC /* LaunchScreen.storyboard in Resources */,
 				97AA192C28A1E61000AD41A5 /* CardView.xib in Resources */,
 				978ED4AA28A7E9AD00A8324B /* SUIT-Bold.ttf in Resources */,
+				978ED4C028A8061600A8324B /* SUIT-Light.ttf in Resources */,
 				97D7497E28A08FED00247EAC /* Assets.xcassets in Resources */,
 				97AA193228A1F39800AD41A5 /* CardCollectionViewCell.xib in Resources */,
 				978ED4AC28A7E9AD00A8324B /* SUIT-SemiBold.ttf in Resources */,
@@ -361,7 +369,7 @@
 				97D7499728A0949C00247EAC /* Endpoint.swift in Sources */,
 				97AA192E28A1E62A00AD41A5 /* CardView.swift in Sources */,
 				97E72D4928A77818007EE25E /* WeatherModel.swift in Sources */,
-				978ED4B928A7F7A500A8324B /* Font.swift in Sources */,
+				978ED4B928A7F7A500A8324B /* CustomFont.swift in Sources */,
 				97D7499928A0951200247EAC /* URL+Extension.swift in Sources */,
 				97A1991728A4939700E5E192 /* MapViewController.swift in Sources */,
 				97F4488428A5DD10006FC86B /* CameraViewController.swift in Sources */,
