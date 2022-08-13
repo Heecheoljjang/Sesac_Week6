@@ -16,9 +16,30 @@ class AddressAPIManager {
     
     static let shared = AddressAPIManager()
     
-    func getLocationData(lan: Double, lon: Double, completionHandler: @escaping (AddressModel) -> ()) {
+    func getLocationData(lat: Double, lon: Double, completionHandler: @escaping (AddressModel) -> ()) {
         
+        let url = Endpoint.kakaoAddress + "x=\(lon)&y=\(lat)"
         
+        let header: HTTPHeaders = [
+            "Authorization": "KakaoAK 62c44e9aa0dc53cc2131bef3065b902e"
+        ]
+        
+        AF.request(url, method: .get, headers: header).validate().responseData { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                let address = json["documents"].arrayValue[0]
+                
+                let first = address["region_1depth_name"].stringValue
+                let third = address["region_3depth_name"].stringValue
+                
+                completionHandler(AddressModel(regionFirst: first, regionThird: third))
+                            
+            case .failure(let error):
+                print(error)
+            }
+        }
         
     }
 }

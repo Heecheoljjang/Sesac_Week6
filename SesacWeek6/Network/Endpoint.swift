@@ -21,4 +21,6 @@ enum Endpoint {
             return URL.makeEndPointString("cafe?query=")
         }
     }
+    
+    static let kakaoAddress = "https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?"
 }

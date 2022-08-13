@@ -8,7 +8,6 @@
 import Foundation
 
 struct AddressModel {
-    let regionType: String
     let regionFirst: String
     let regionThird: String
 }
