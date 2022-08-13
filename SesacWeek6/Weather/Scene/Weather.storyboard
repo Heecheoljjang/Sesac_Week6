@@ -78,7 +78,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Df-Wq-XFa">
-                                <rect key="frame" x="20" y="144.5" width="187" height="52"/>
+                                <rect key="frame" x="20" y="144.5" width="183" height="52"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1c7-cL-jmV">
                                         <rect key="frame" x="24" y="12" width="28" height="28"/>
@@ -102,7 +102,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="K5c-iA-ufi" firstAttribute="leading" secondItem="T9g-90-ffj" secondAttribute="trailing" constant="12" id="AZV-Me-VOU"/>
-                                    <constraint firstAttribute="trailing" secondItem="K5c-iA-ufi" secondAttribute="trailing" constant="28" id="DSb-0t-Ipr"/>
+                                    <constraint firstAttribute="trailing" secondItem="K5c-iA-ufi" secondAttribute="trailing" constant="24" id="DSb-0t-Ipr"/>
                                     <constraint firstItem="T9g-90-ffj" firstAttribute="leading" secondItem="1c7-cL-jmV" secondAttribute="trailing" constant="12" id="NQ1-xo-LEL"/>
                                     <constraint firstItem="1c7-cL-jmV" firstAttribute="top" secondItem="7Df-Wq-XFa" secondAttribute="top" constant="12" id="SJC-To-1pA"/>
                                     <constraint firstItem="1c7-cL-jmV" firstAttribute="leading" secondItem="7Df-Wq-XFa" secondAttribute="leading" constant="24" id="UJL-TZ-KTE"/>
@@ -113,7 +113,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRB-eu-Emd">
-                                <rect key="frame" x="20" y="204.5" width="93.5" height="52"/>
+                                <rect key="frame" x="20" y="204.5" width="89.5" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ee-eM-dFy">
                                         <rect key="frame" x="24" y="12" width="41.5" height="28"/>
@@ -126,13 +126,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="15x-UQ-JpM"/>
                                     <constraint firstAttribute="bottom" secondItem="6ee-eM-dFy" secondAttribute="bottom" constant="12" id="DzA-3E-0AK"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ee-eM-dFy" secondAttribute="trailing" constant="28" id="Jtu-UH-tBm"/>
+                                    <constraint firstAttribute="trailing" secondItem="6ee-eM-dFy" secondAttribute="trailing" constant="24" id="Jtu-UH-tBm"/>
                                     <constraint firstItem="6ee-eM-dFy" firstAttribute="top" secondItem="XRB-eu-Emd" secondAttribute="top" constant="12" id="lop-uI-kuw"/>
                                     <constraint firstItem="6ee-eM-dFy" firstAttribute="leading" secondItem="XRB-eu-Emd" secondAttribute="leading" constant="24" id="tFP-PJ-m6v"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uht-fd-SLu">
-                                <rect key="frame" x="20" y="264.5" width="93.5" height="52"/>
+                                <rect key="frame" x="20" y="264.5" width="89.5" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeR-T3-eOH">
                                         <rect key="frame" x="24" y="12" width="41.5" height="28"/>
@@ -147,11 +147,11 @@
                                     <constraint firstItem="QeR-T3-eOH" firstAttribute="leading" secondItem="Uht-fd-SLu" secondAttribute="leading" constant="24" id="4JW-5y-uxk"/>
                                     <constraint firstAttribute="height" constant="52" id="Blp-gS-CzB"/>
                                     <constraint firstAttribute="bottom" secondItem="QeR-T3-eOH" secondAttribute="bottom" constant="12" id="SuU-bM-u96"/>
-                                    <constraint firstAttribute="trailing" secondItem="QeR-T3-eOH" secondAttribute="trailing" constant="28" id="t0s-KY-OTh"/>
+                                    <constraint firstAttribute="trailing" secondItem="QeR-T3-eOH" secondAttribute="trailing" constant="24" id="t0s-KY-OTh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCX-eZ-WeH">
-                                <rect key="frame" x="20" y="324.5" width="93.5" height="52"/>
+                                <rect key="frame" x="20" y="324.5" width="89.5" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COj-nO-ima">
                                         <rect key="frame" x="24" y="12" width="41.5" height="28"/>
@@ -165,12 +165,12 @@
                                     <constraint firstAttribute="bottom" secondItem="COj-nO-ima" secondAttribute="bottom" constant="12" id="1cX-Ly-jFd"/>
                                     <constraint firstAttribute="height" constant="52" id="5XF-Dv-YwQ"/>
                                     <constraint firstItem="COj-nO-ima" firstAttribute="leading" secondItem="JCX-eZ-WeH" secondAttribute="leading" constant="24" id="DJb-ij-PDd"/>
-                                    <constraint firstAttribute="trailing" secondItem="COj-nO-ima" secondAttribute="trailing" constant="28" id="QLR-zT-qtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="COj-nO-ima" secondAttribute="trailing" constant="24" id="QLR-zT-qtJ"/>
                                     <constraint firstItem="COj-nO-ima" firstAttribute="top" secondItem="JCX-eZ-WeH" secondAttribute="top" constant="12" id="Zh6-bb-qn7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzU-iF-DHE">
-                                <rect key="frame" x="20" y="384.5" width="93.5" height="52"/>
+                                <rect key="frame" x="20" y="384.5" width="89.5" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIf-Tj-zTI">
                                         <rect key="frame" x="24" y="12" width="41.5" height="28"/>
@@ -185,7 +185,7 @@
                                     <constraint firstItem="CIf-Tj-zTI" firstAttribute="top" secondItem="zzU-iF-DHE" secondAttribute="top" constant="12" id="ndD-wy-Z7q"/>
                                     <constraint firstAttribute="height" constant="52" id="ph3-ZH-US5"/>
                                     <constraint firstItem="CIf-Tj-zTI" firstAttribute="leading" secondItem="zzU-iF-DHE" secondAttribute="leading" constant="24" id="rnk-kZ-XFg"/>
-                                    <constraint firstAttribute="trailing" secondItem="CIf-Tj-zTI" secondAttribute="trailing" constant="28" id="w0B-9E-yf2"/>
+                                    <constraint firstAttribute="trailing" secondItem="CIf-Tj-zTI" secondAttribute="trailing" constant="24" id="w0B-9E-yf2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -234,7 +234,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Yya-Eb-xpK"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="71.651785714285708"/>
         </scene>

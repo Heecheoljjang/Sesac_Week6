@@ -47,7 +47,6 @@
 		97D7499E28A0ABF800247EAC /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D7499D28A0ABF800247EAC /* ClosureViewController.swift */; };
 		97D749A328A0E9D300247EAC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D749A228A0E9D300247EAC /* String+Extension.swift */; };
 		97E72D4928A77818007EE25E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E72D4828A77818007EE25E /* WeatherModel.swift */; };
-		97E72D4C28A7B4B7007EE25E /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 97E72D4B28A7B4B7007EE25E /* SkeletonView */; };
 		97F4488228A5D6EE006FC86B /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 97F4488128A5D6EE006FC86B /* YPImagePicker */; };
 		97F4488428A5DD10006FC86B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F4488328A5DD10006FC86B /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
@@ -104,7 +103,6 @@
 				97D7498A28A0902D00247EAC /* Alamofire in Frameworks */,
 				97F4488228A5D6EE006FC86B /* YPImagePicker in Frameworks */,
 				978ED4B728A7F79E00A8324B /* JGProgressHUD in Frameworks */,
-				97E72D4C28A7B4B7007EE25E /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +271,6 @@
 				97D7498C28A0903900247EAC /* Kingfisher */,
 				97D7498F28A0904A00247EAC /* SwiftyJSON */,
 				97F4488128A5D6EE006FC86B /* YPImagePicker */,
-				97E72D4B28A7B4B7007EE25E /* SkeletonView */,
 				978ED4B628A7F79E00A8324B /* JGProgressHUD */,
 			);
 			productName = SesacWeek6;
@@ -309,7 +306,6 @@
 				97D7498B28A0903900247EAC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				97D7498E28A0904A00247EAC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				97F4488028A5D6EE006FC86B /* XCRemoteSwiftPackageReference "YPImagePicker" */,
-				97E72D4A28A7B4B7007EE25E /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 97D7497228A08FEB00247EAC /* Products */;
@@ -632,14 +628,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		97E72D4A28A7B4B7007EE25E /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		97F4488028A5D6EE006FC86B /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Yummypets/YPImagePicker.git";
@@ -670,11 +658,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 97D7498E28A0904A00247EAC /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		97E72D4B28A7B4B7007EE25E /* SkeletonView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 97E72D4A28A7B4B7007EE25E /* XCRemoteSwiftPackageReference "SkeletonView" */;
-			productName = SkeletonView;
 		};
 		97F4488128A5D6EE006FC86B /* YPImagePicker */ = {
 			isa = XCSwiftPackageProductDependency;
