@@ -8,10 +8,12 @@
 import Foundation
 
 struct WeatherModel {
-    let temp: Double
-    let temp_min: Double
-    let temp_max: Double
-    let pressure: Double
-    let humidity: Double
+    let temp: Int
+    let temp_min: Int
+    let temp_max: Int
+    let pressure: Int
+    let humidity: Int
     let wind: Double
+    let iconId: Int
+    let weatherId: Int
 }

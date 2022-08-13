@@ -10,6 +10,27 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var locationButton: UIImageView!
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var weatherView: UIView!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var maxMinTempLabel: UILabel!
+    
+    @IBOutlet weak var windView: UIView!
+    @IBOutlet weak var windLabel: UIView!
+    
+    @IBOutlet weak var humidityView: UIView!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
+    @IBOutlet weak var pressureView: UIView!
+    @IBOutlet weak var pressureLabel: UILabel!
+    
+    @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     let locationManager = CLLocationManager()
     
     var lat: Double = 0

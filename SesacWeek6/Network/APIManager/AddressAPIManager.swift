@@ -28,7 +28,7 @@ class AddressAPIManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                
+                print(json)
                 let address = json["documents"].arrayValue[0]
                 
                 let first = address["region_1depth_name"].stringValue
