@@ -74,7 +74,7 @@ class WeatherViewController: UIViewController {
                 let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
                 self.weatherImageView.kf.setImage(with: imageURL!)
                 self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
+                self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
                 
                 //두번째 뷰
                 self.windLabel.text = "풍속    \(value.wind)m/s"
@@ -253,7 +253,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
                     let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
                     self.weatherImageView.kf.setImage(with: imageURL!)
                     self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                    self.maxMinTempLabel.text = "\(value.temp_max)° · \(value.temp_min)°"
+                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
                     
                     //두번째 뷰
                     self.windLabel.text = "풍속    \(value.wind)m/s"
