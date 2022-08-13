@@ -91,6 +91,7 @@ class WeatherViewController: UIViewController {
     }
     
     func allHidden() {
+        locationButton.isHidden = true
         locationView.isHidden = true
         weatherView.isHidden = true
         windView.isHidden = true
@@ -100,6 +101,7 @@ class WeatherViewController: UIViewController {
     }
     
     func allShow() {
+        locationButton.isHidden = false
         locationView.isHidden = false
         weatherView.isHidden = false
         windView.isHidden = false
