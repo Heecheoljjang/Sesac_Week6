@@ -48,6 +48,8 @@ class WeatherViewController: UIViewController {
     
     var timer = Timer()
     
+    var hiddenValue = false
+    
     //기본 새싹캠퍼스 좌표
     var lat: Double = 37.517829
     var lon: Double = 126.886270
@@ -61,13 +63,13 @@ class WeatherViewController: UIViewController {
         
         getCurrentTime()
         
-        allHidden()
-        hud.show(in: view)
+        allHidden(isHidden: hiddenValue)
+        //hud.show(in: view)
             
     }
     
     //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
-    func allHidden() {
+    func allHidden(isHidden: Bool) {
 //        timeLabel.isHidden = true
 //        locationButton.isHidden = true
 //        locationView.isHidden = true
@@ -76,13 +78,15 @@ class WeatherViewController: UIViewController {
 //        humidityView.isHidden = true
 //        pressureView.isHidden = true
 //        messageView.isHidden = true
+        hiddenValue = !isHidden
         views.forEach { view in
-            view.isHidden = true
+            view.isHidden = !isHidden
         }
         
+        !isHidden ? self.hud.show(in: view) : self.hud.dismiss(animated: true)
     }
 
-    func allShow() {
+//    func allShow() {
 //        timeLabel.isHidden = false
 //        locationButton.isHidden = false
 //        locationView.isHidden = false
@@ -91,10 +95,10 @@ class WeatherViewController: UIViewController {
 //        humidityView.isHidden = false
 //        pressureView.isHidden = false
 //        messageView.isHidden = false
-        views.forEach { view in
-            view.isHidden = false
-        }
-    }
+//        views.forEach { view in
+//            view.isHidden = false
+//        }
+//    }
 
     //UI 메서드
     func setUpUI() {
@@ -154,10 +158,13 @@ extension WeatherViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
-            //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
-            allHidden()
+            
+            if hiddenValue == false {
+                allHidden(isHidden: hiddenValue)
+            }
+            //allHidden()
             locationButton.image = UIImage(systemName: ImageSelection.empty)
-            hud.show(in: view)
+            //hud.show(in: view)
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst)"
                 
@@ -180,8 +187,12 @@ extension WeatherViewController {
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
                     
-                    self.hud.dismiss(animated: true)
-                    self.allShow()
+//                    self.hud.dismiss(animated: true)
+//                    self.allShow()
+                    print(self.hiddenValue)
+                    if self.hiddenValue {
+                        self.allHidden(isHidden: self.hiddenValue)
+                    }
                 }
             }
             showRequestLocationServiceAlert()
@@ -215,9 +226,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
         if let coordinate = locations.last?.coordinate {
             lat = coordinate.latitude
             lon = coordinate.longitude
-                        
-            allHidden()
-            hud.show(in: view)
+            
+            if hiddenValue == false {
+                allHidden(isHidden: hiddenValue)
+            }
+            //hud.show(in: view)
             //위치 버튼 이미지 채우기
             self.locationButton.image = UIImage(systemName: ImageSelection.fill)
             
@@ -243,8 +256,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
 
-                    self.hud.dismiss(animated: true)
-                    self.allShow()
+                    //self.hud.dismiss(animated: true)
+//                    self.allShow()
+                    if self.hiddenValue {
+                        self.allHidden(isHidden: self.hiddenValue)
+                    }
                 }
             }
         }
