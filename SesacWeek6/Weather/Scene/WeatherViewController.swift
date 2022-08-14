@@ -39,6 +39,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet var views: [UIView]!
+    
+    
     let locationManager = CLLocationManager()
     
     let hud = JGProgressHUD()
@@ -65,32 +68,39 @@ class WeatherViewController: UIViewController {
     
     //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
     func allHidden() {
-        timeLabel.isHidden = true
-        locationButton.isHidden = true
-        locationView.isHidden = true
-        weatherView.isHidden = true
-        windView.isHidden = true
-        humidityView.isHidden = true
-        pressureView.isHidden = true
-        messageView.isHidden = true
+//        timeLabel.isHidden = true
+//        locationButton.isHidden = true
+//        locationView.isHidden = true
+//        weatherView.isHidden = true
+//        windView.isHidden = true
+//        humidityView.isHidden = true
+//        pressureView.isHidden = true
+//        messageView.isHidden = true
+        views.forEach { view in
+            view.isHidden = true
+        }
+        
     }
 
     func allShow() {
-        timeLabel.isHidden = false
-        locationButton.isHidden = false
-        locationView.isHidden = false
-        weatherView.isHidden = false
-        windView.isHidden = false
-        humidityView.isHidden = false
-        pressureView.isHidden = false
-        messageView.isHidden = false
+//        timeLabel.isHidden = false
+//        locationButton.isHidden = false
+//        locationView.isHidden = false
+//        weatherView.isHidden = false
+//        windView.isHidden = false
+//        humidityView.isHidden = false
+//        pressureView.isHidden = false
+//        messageView.isHidden = false
+        views.forEach { view in
+            view.isHidden = false
+        }
     }
 
     //UI 메서드
     func setUpUI() {
         view.backgroundColor = .systemGray5
         timeLabel.font = UIFont(name: CustomFont.medium, size: 16)
-        locationButton.image = UIImage(systemName: "location")
+        locationButton.image = UIImage(systemName: ImageSelection.empty)
         locationLabel.font = UIFont(name: CustomFont.semibold, size: 25)
         currentTempLabel.font = UIFont(name: CustomFont.medium, size: 20)
         weatherView.layer.cornerRadius = 10
@@ -143,10 +153,10 @@ extension WeatherViewController {
         case .notDetermined:
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
-        case .restricted:
+        case .restricted, .denied:
             //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
             allHidden()
-            locationButton.image = UIImage(systemName: "location")
+            locationButton.image = UIImage(systemName: ImageSelection.empty)
             hud.show(in: view)
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst)"
@@ -155,49 +165,17 @@ extension WeatherViewController {
                     //첫번째 뷰
                     let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
                     self.weatherImageView.kf.setImage(with: imageURL!)
-                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
+                    self.currentTempLabel.text = value.temperatureText
+                    self.maxMinTempLabel.text = value.maxMinText
                     
                     //두번째 뷰
-                    self.windLabel.text = "풍속    \(value.wind)m/s"
+                    self.windLabel.text = value.windText
                     
                     //세번째 뷰
-                    self.humidityLabel.text = "습도    \(value.humidity)%"
+                    self.humidityLabel.text = value.humidityText
                     
                     //네번째 뷰
-                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
-                    
-                    //다섯번째 뷰
-                    self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
-                    
-                    self.hud.dismiss(animated: true)
-                    self.allShow()
-                }
-            }
-            showRequestLocationServiceAlert()
-        case .denied:
-            //기본적으로 새싹캠퍼스의 날씨지만, 레이블은 서울만 표시(현대카드 웨더처럼)
-            allHidden()
-            locationButton.image = UIImage(systemName: "location")
-            hud.show(in: view)
-            AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
-                self.locationLabel.text = "\(value.regionFirst)"
-                
-                WeatherAPIManager.shared.getWeatherData(lat: self.lat, lon: self.lon) { value in
-                    //첫번째 뷰
-                    let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
-                    self.weatherImageView.kf.setImage(with: imageURL!)
-                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
-                    
-                    //두번째 뷰
-                    self.windLabel.text = "풍속    \(value.wind)m/s"
-                    
-                    //세번째 뷰
-                    self.humidityLabel.text = "습도    \(value.humidity)%"
-                    
-                    //네번째 뷰
-                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                    self.pressureLabel.text = value.pressureText
                     
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
@@ -241,7 +219,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             allHidden()
             hud.show(in: view)
             //위치 버튼 이미지 채우기
-            self.locationButton.image = UIImage(systemName: "location.fill")
+            self.locationButton.image = UIImage(systemName: ImageSelection.fill)
             
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
@@ -250,17 +228,17 @@ extension WeatherViewController: CLLocationManagerDelegate {
                     //첫번째 뷰
                     let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
                     self.weatherImageView.kf.setImage(with: imageURL!)
-                    self.currentTempLabel.text = "\(WeatherModel.getWeather(weather: value.weather)) \(value.temp)°"
-                    self.maxMinTempLabel.text = "최고 \(value.temp_max)° · 최저 \(value.temp_min)°"
+                    self.currentTempLabel.text = value.temperatureText
+                    self.maxMinTempLabel.text = value.maxMinText
 
                     //두번째 뷰
-                    self.windLabel.text = "풍속    \(value.wind)m/s"
+                    self.windLabel.text = value.windText
 
                     //세번째 뷰
-                    self.humidityLabel.text = "습도    \(value.humidity)%"
+                    self.humidityLabel.text = value.humidityText
 
                     //네번째 뷰
-                    self.pressureLabel.text = "기압    \(value.pressure)hPa"
+                    self.pressureLabel.text = value.pressureText
 
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)

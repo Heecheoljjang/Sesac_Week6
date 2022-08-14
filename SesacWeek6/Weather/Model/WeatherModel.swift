@@ -18,6 +18,36 @@ struct WeatherModel {
     let iconId: String
     let weather: String
     
+    var temperatureText: String {
+        get {
+            return "\(WeatherModel.getWeather(weather: weather)) \(temp)°"
+        }
+    }
+    
+    var maxMinText: String {
+        get {
+            return "최고 \(temp_max)° · 최저 \(temp_min)°"
+        }
+    }
+    
+    var windText: String {
+        get {
+            return "풍속    \(wind)m/s"
+        }
+    }
+    
+    var humidityText: String {
+        get {
+            return "습도    \(humidity)%"
+        }
+    }
+    
+    var pressureText: String {
+        get {
+            return "기압    \(pressure)hPa"
+        }
+    }
+    
     static func getWeather(weather: String) -> String {
         
         switch weather {

@@ -10,4 +10,5 @@ import Foundation
 struct AddressModel {
     let regionFirst: String
     let regionThird: String
+    
 }

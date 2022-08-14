@@ -231,6 +231,12 @@
                         <outlet property="weatherView" destination="7Df-Wq-XFa" id="8CS-Sn-Tsv"/>
                         <outlet property="windLabel" destination="6ee-eM-dFy" id="Eob-hh-0af"/>
                         <outlet property="windView" destination="XRB-eu-Emd" id="b7P-qc-5zb"/>
+                        <outletCollection property="views" destination="dN0-y5-HmT" collectionClass="NSMutableArray" id="1fQ-dy-N3J"/>
+                        <outletCollection property="views" destination="7Df-Wq-XFa" collectionClass="NSMutableArray" id="jp7-Ou-bIQ"/>
+                        <outletCollection property="views" destination="XRB-eu-Emd" collectionClass="NSMutableArray" id="neV-wq-gVa"/>
+                        <outletCollection property="views" destination="Uht-fd-SLu" collectionClass="NSMutableArray" id="CZL-7G-6bq"/>
+                        <outletCollection property="views" destination="JCX-eZ-WeH" collectionClass="NSMutableArray" id="0XD-d1-CJY"/>
+                        <outletCollection property="views" destination="zzU-iF-DHE" collectionClass="NSMutableArray" id="UxM-x1-vJ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
