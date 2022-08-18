@@ -28,6 +28,8 @@ class MapViewController: UIViewController {
     //Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     
+    var myLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 29.978485, longitude: 31.132462)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,7 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         
         //지도 중심 설정: 애플맵 활용해서 좌표 복사
-        let center = CLLocationCoordinate2D(latitude: 29.978485, longitude: 31.132462)
+        let center = myLocation
         
         setRegionAndAnnotation(center: center)
         
@@ -142,6 +144,8 @@ extension MapViewController: CLLocationManagerDelegate {
         print(#function, locations)
         
         if let coordinate = locations.last?.coordinate {
+            
+            myLocation = coordinate // 데이터 전달을 위해
             print(coordinate)
         }
         

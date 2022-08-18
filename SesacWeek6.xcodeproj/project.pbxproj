@@ -12,6 +12,8 @@
 		970DBC2528A6A50700339CFC /* WeatherAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */; };
 		970DBC2728A6A51100339CFC /* AddressAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2628A6A51100339CFC /* AddressAPIManager.swift */; };
 		970DBC2A28A6B3AC00339CFC /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970DBC2928A6B3AC00339CFC /* AddressModel.swift */; };
+		973EF6A128AE8F39004513E0 /* SelectLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EF6A028AE8F39004513E0 /* SelectLocationViewController.swift */; };
+		973EF6A428AE8F4E004513E0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 973EF6A328AE8F4E004513E0 /* SnapKit */; };
 		978ED4AA28A7E9AD00A8324B /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A128A7E9AD00A8324B /* SUIT-Bold.ttf */; };
 		978ED4AB28A7E9AD00A8324B /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */; };
 		978ED4AC28A7E9AD00A8324B /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */; };
@@ -58,6 +60,7 @@
 		970DBC2428A6A50700339CFC /* WeatherAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIManager.swift; sourceTree = "<group>"; };
 		970DBC2628A6A51100339CFC /* AddressAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAPIManager.swift; sourceTree = "<group>"; };
 		970DBC2928A6B3AC00339CFC /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		973EF6A028AE8F39004513E0 /* SelectLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationViewController.swift; sourceTree = "<group>"; };
 		978ED4A128A7E9AD00A8324B /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
 		978ED4A228A7E9AD00A8324B /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		978ED4A328A7E9AD00A8324B /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 				97D7499028A0904A00247EAC /* SwiftyJSON in Frameworks */,
 				97D7498D28A0903900247EAC /* Kingfisher in Frameworks */,
 				97D7498A28A0902D00247EAC /* Alamofire in Frameworks */,
+				973EF6A428AE8F4E004513E0 /* SnapKit in Frameworks */,
 				97F4488228A5D6EE006FC86B /* YPImagePicker in Frameworks */,
 				978ED4B728A7F79E00A8324B /* JGProgressHUD in Frameworks */,
 			);
@@ -116,6 +120,7 @@
 			children = (
 				970DBC2028A69D4F00339CFC /* Weather.storyboard */,
 				970DBC2228A69D5D00339CFC /* WeatherViewController.swift */,
+				973EF6A028AE8F39004513E0 /* SelectLocationViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				97D7498F28A0904A00247EAC /* SwiftyJSON */,
 				97F4488128A5D6EE006FC86B /* YPImagePicker */,
 				978ED4B628A7F79E00A8324B /* JGProgressHUD */,
+				973EF6A328AE8F4E004513E0 /* SnapKit */,
 			);
 			productName = SesacWeek6;
 			productReference = 97D7497128A08FEB00247EAC /* SesacWeek6.app */;
@@ -310,6 +316,7 @@
 				97D7498E28A0904A00247EAC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				97F4488028A5D6EE006FC86B /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				973EF6A228AE8F4E004513E0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 97D7497228A08FEB00247EAC /* Products */;
 			projectDirPath = "";
@@ -363,6 +370,7 @@
 				97D7499C28A0A7A200247EAC /* KakaoAPIManager.swift in Sources */,
 				97AA192A28A1E03200AD41A5 /* SesacButton.swift in Sources */,
 				97AA193628A1FC3900AD41A5 /* MainTableViewCell.swift in Sources */,
+				973EF6A128AE8F39004513E0 /* SelectLocationViewController.swift in Sources */,
 				9798483E28A343E2003EB220 /* TMDBAPIManager.swift in Sources */,
 				9798483C28A33073003EB220 /* ReusableViewProtocol.swift in Sources */,
 				97D7499728A0949C00247EAC /* Endpoint.swift in Sources */,
@@ -600,6 +608,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		973EF6A228AE8F4E004513E0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
@@ -643,6 +659,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		973EF6A328AE8F4E004513E0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 973EF6A228AE8F4E004513E0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		978ED4B628A7F79E00A8324B /* JGProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 978ED4B528A7F79E00A8324B /* XCRemoteSwiftPackageReference "JGProgressHUD" */;

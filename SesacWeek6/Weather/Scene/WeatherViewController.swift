@@ -8,8 +8,7 @@
 import UIKit
 import CoreLocation
 
-import SkeletonView
-import Kingfisher
+//import Kingfisher
 import JGProgressHUD
 
 class WeatherViewController: UIViewController {
@@ -44,6 +43,8 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    let geocoder = CLGeocoder()
+    
     let hud = JGProgressHUD()
     
     var timer = Timer()
@@ -53,6 +54,8 @@ class WeatherViewController: UIViewController {
     //기본 새싹캠퍼스 좌표
     var lat: Double = 37.517829
     var lon: Double = 126.886270
+    
+    var myLocation = CLLocationCoordinate2D(latitude: 37.517829, longitude: 126.886270)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,41 +67,20 @@ class WeatherViewController: UIViewController {
         getCurrentTime()
         
         allHidden(isHidden: hiddenValue)
-        //hud.show(in: view)
-            
+        
     }
     
     //skeleton쓰니까 뷰가 살짝 보이는 오류가 있어서 hidden하기로함. 어차피 객체가 올라와있는건 동일하므로 메모리 낭비 아닐 것 같음.
     func allHidden(isHidden: Bool) {
-//        timeLabel.isHidden = true
-//        locationButton.isHidden = true
-//        locationView.isHidden = true
-//        weatherView.isHidden = true
-//        windView.isHidden = true
-//        humidityView.isHidden = true
-//        pressureView.isHidden = true
-//        messageView.isHidden = true
+
         hiddenValue = !isHidden
+        timeLabel.isHidden = !isHidden
         views.forEach { view in
             view.isHidden = !isHidden
         }
         
-        !isHidden ? self.hud.show(in: view) : self.hud.dismiss(animated: true)
+        !isHidden ? hud.show(in: view) : hud.dismiss(animated: true)
     }
-
-//    func allShow() {
-//        timeLabel.isHidden = false
-//        locationButton.isHidden = false
-//        locationView.isHidden = false
-//        weatherView.isHidden = false
-//        windView.isHidden = false
-//        humidityView.isHidden = false
-//        pressureView.isHidden = false
-//        messageView.isHidden = false
-//        views.forEach { view in
-//            view.isHidden = false
-//        }
-//    }
 
     //UI 메서드
     func setUpUI() {
@@ -133,6 +115,17 @@ class WeatherViewController: UIViewController {
         formatter.locale = Locale(identifier: "ko")
         timeLabel.text = formatter.string(from: Date())
     }
+    
+    @IBAction func tapAddButton(_ sender: UIButton) {
+    
+        let vc = SelectLocationViewController()
+        
+        vc.modalPresentationStyle = .fullScreen
+        
+        vc.myLocation = myLocation
+        
+        present(vc, animated: true)
+    }
 }
 
 //위치 관련 메서드
@@ -162,9 +155,7 @@ extension WeatherViewController {
             if hiddenValue == false {
                 allHidden(isHidden: hiddenValue)
             }
-            //allHidden()
             locationButton.image = UIImage(systemName: ImageSelection.empty)
-            //hud.show(in: view)
             AddressAPIManager.shared.getLocationData(lat: lat, lon: lon) { value in
                 self.locationLabel.text = "\(value.regionFirst)"
                 
@@ -186,10 +177,7 @@ extension WeatherViewController {
                     
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
-                    
-//                    self.hud.dismiss(animated: true)
-//                    self.allShow()
-                    print(self.hiddenValue)
+
                     if self.hiddenValue {
                         self.allHidden(isHidden: self.hiddenValue)
                     }
@@ -227,10 +215,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
             lat = coordinate.latitude
             lon = coordinate.longitude
             
+            myLocation = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            
             if hiddenValue == false {
                 allHidden(isHidden: hiddenValue)
             }
-            //hud.show(in: view)
             //위치 버튼 이미지 채우기
             self.locationButton.image = UIImage(systemName: ImageSelection.fill)
             
@@ -256,8 +245,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
                     //다섯번째 뷰
                     self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
 
-                    //self.hud.dismiss(animated: true)
-//                    self.allShow()
                     if self.hiddenValue {
                         self.allHidden(isHidden: self.hiddenValue)
                     }

@@ -27,10 +27,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var blogList: [String] = []
-    var cafeList: [String] = []
+    private var blogList: [String] = []
+    private var cafeList: [String] = []
     
-    var isExpanded = false // false면 2줄, true면 0
+    private var isExpanded = false // false면 2줄, true면 0
+    
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,10 @@ class ViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         
         searchBlog()
-        
+                
+
     }
-    func searchBlog() {
+    private func searchBlog() {
         KakaoAPIManager.shared.callRequest(type: .blog, query: "희철") { json in
             print(json)
             
@@ -53,7 +56,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func searchCafe() {
+    private func searchCafe() {
         KakaoAPIManager.shared.callRequest(type: .cafe, query: "희철") { json in
             print(json)
             

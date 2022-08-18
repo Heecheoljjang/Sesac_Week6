@@ -10,12 +10,32 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+struct User {
+    fileprivate let name = "heecheol" // sturct 자체가 인터널이기때문에 다른 파일에서 인스턴스 생성가능. 하지만 인스턴스르 만든 후에 name에 접근 불가능. 구조체 사용가능. 다른 스위프트 파일은 xw
+    let age = 12343 // 같은 스위프트 파일 내에서 같은 타입
+}
+
+extension User {
+    func example() {
+        print(self.name, self.age)
+    }
+}
+
+struct Person {
+    
+    func exmaple() {
+        let user = User()
+        user.name
+        user.age
+        
+    }
+}
 class KakaoAPIManager {
     private init() {}
     
     static let shared = KakaoAPIManager()
     
-    let header: HTTPHeaders = ["Authorization": "KakaoAK \(APIKey.kakao)"]
+    private let header: HTTPHeaders = ["Authorization": "KakaoAK \(APIKey.kakao)"]
     
     func callRequest(type: Endpoint, query: String, completionHandler: @escaping (JSON) -> ()) {
         
