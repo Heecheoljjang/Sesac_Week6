@@ -29,7 +29,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="31"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="location.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapCurrentLocationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="y5W-qL-Oy7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9w-Dj-cJB">
                                         <rect key="frame" x="40" y="0.0" width="40" height="31"/>
@@ -249,8 +252,8 @@
     </scenes>
     <resources>
         <image name="line.3.horizontal" catalog="system" width="128" height="64"/>
+        <image name="location.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -124,7 +124,49 @@ class WeatherViewController: UIViewController {
         
         vc.myLocation = myLocation
         
+        vc.locationHandler = { coordinate in
+            print(coordinate)
+            if self.hiddenValue == false {
+                self.allHidden(isHidden: self.hiddenValue)
+            }
+            //위치 버튼 이미지 채우기
+            self.locationButton.image = UIImage(systemName: ImageSelection.fill)
+            
+            AddressAPIManager.shared.getLocationData(lat: coordinate.latitude, lon: coordinate.longitude) { value in
+                self.locationLabel.text = "\(value.regionFirst), \(value.regionThird)"
+
+                WeatherAPIManager.shared.getWeatherData(lat: coordinate.latitude, lon: coordinate.longitude) { value in
+                    //첫번째 뷰
+                    let imageURL = URL(string: Endpoint.imageURL + "\(value.iconId)@2x.png")
+                    self.weatherImageView.kf.setImage(with: imageURL!)
+                    self.currentTempLabel.text = value.temperatureText
+                    self.maxMinTempLabel.text = value.maxMinText
+
+                    //두번째 뷰
+                    self.windLabel.text = value.windText
+
+                    //세번째 뷰
+                    self.humidityLabel.text = value.humidityText
+
+                    //네번째 뷰
+                    self.pressureLabel.text = value.pressureText
+
+                    //다섯번째 뷰
+                    self.messageLabel.text = WeatherModel.getMessage(weather: value.weather)
+
+                    if self.hiddenValue {
+                        self.allHidden(isHidden: self.hiddenValue)
+                    }
+                }
+            }
+
+        }
+        
         present(vc, animated: true)
+    }
+    @IBAction func tapCurrentLocationButton(_ sender: UIButton) {
+        
+        locationManager.startUpdatingLocation()
     }
 }
 

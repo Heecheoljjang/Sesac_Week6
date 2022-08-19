@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import MapKit
+import CoreLocation
 
 class SelectLocationViewController: UIViewController {
 
@@ -27,6 +28,8 @@ class SelectLocationViewController: UIViewController {
     
     var myLocation: CLLocationCoordinate2D?
     
+    var locationHandler: ((CLLocationCoordinate2D) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +39,21 @@ class SelectLocationViewController: UIViewController {
         
         setUpLayout()
         
+        mapView.delegate = self
+        
         if let myLocation = myLocation {
             setRegionAndAnnotation(center: myLocation)
         }
         
+        saveButton.addTarget(self, action: #selector(sendLocationData), for: .touchUpInside)
+        
+    }
+    
+    @objc func sendLocationData() {
+        if let myLocation = myLocation {
+            locationHandler?(myLocation)
+            dismiss(animated: true)
+        }
     }
     
     func addViews() {
@@ -82,6 +96,18 @@ class SelectLocationViewController: UIViewController {
 extension SelectLocationViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("123")
+        print(mapView.centerCoordinate)
+        //데이터 전달
+        myLocation = mapView.centerCoordinate
+        
+        //어노테이션
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = mapView.centerCoordinate
+        annotation.title = "현재 위치"
+
+        mapView.addAnnotation(annotation)
     }
+
 }
